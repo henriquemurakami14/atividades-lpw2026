@@ -18,7 +18,7 @@ if (isset($_GET['tipo']) && isset($_GET['nome']) && isset($_GET['sobrenome']) &&
             "idade" => $idade
         ];
 
-        echo("Nome completo: " . $pessoa["nome"] . " " . $pessoa["sobrenome"]);
+        echo("Nome completo: " . $pessoa["nome"] . " " . $pessoa["sobrenome"] . "<br>Idade: " . $pessoa['idade']);
 
     } elseif ($tipo == "C") {
 
