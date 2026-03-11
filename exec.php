@@ -1,26 +1,40 @@
 <?php
-
 require_once("model/Pessoa.php");
 
-$tipo = $_GET['tipo'];
-$nome = $_GET['nome'];
-$sobrenome = $_GET['sobrenome'];
-$idade = $_GET['idade'];
+if (isset($_GET['tipo']) && isset($_GET['nome']) && isset($_GET['sobrenome']) && isset($_GET['idade'])) {
 
-if ($tipo == "A") {
+    $tipo = $_GET['tipo'];
+    $nome = $_GET['nome'];
+    $sobrenome = $_GET['sobrenome'];
+    $idade = $_GET['idade'];
 
-    echo "Array";
+    if ($tipo == "A") {
 
-}elseif ($tipo == "C") {
-    
-    echo "Classe<br>";
-    $pessoa = new Pessoa;
-    $pessoa->setNome($nome);
-    $pessoa->setSobrenome($sobrenome);
-    $pessoa->setIdade($idade);
-    
-    echo("Nome Completo: " . $pessoa->getNome() . $pessoa->getSobrenome() . "<br>Idade: " . $pessoa->getIdade());
-        
+        echo "Array<br><br>";
+
+        $pessoa = [
+            "nome" => $nome,
+            "sobrenome" => $sobrenome,
+            "idade" => $idade
+        ];
+
+        echo("Nome completo: " . $pessoa["nome"] . " " . $pessoa["sobrenome"]);
+
+    } elseif ($tipo == "C") {
+
+        echo "Classe<br><br>";
+        $pessoa = new Pessoa;
+        $pessoa->setNome($nome);
+        $pessoa->setSobrenome($sobrenome);
+        $pessoa->setIdade($idade);
+
+        echo ("Nome Completo: " . $pessoa->getNome() . " " . $pessoa->getSobrenome() . "<br>Idade: " . $pessoa->getIdade());
+
+    } else {
+
+        echo "Erro: O tipo é diferente de A ou C";
+
+    }
 }else {
-    echo "Erro: O tipo não existe ou ele é diferente de A ou C";
+    echo "Dados Inválidos";
 }
